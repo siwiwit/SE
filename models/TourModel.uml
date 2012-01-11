@@ -24,7 +24,6 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_CeRfMDxPEeGXEoggOa7gQw" name="Class2"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_TAWKYDxPEeGXEoggOa7gQw" name="pois" memberEnd="_TAWKYTxPEeGXEoggOa7gQw _TATuIDxPEeGXEoggOa7gQw">
       <ownedEnd xmi:id="_TAWKYTxPEeGXEoggOa7gQw" name="tour" type="_BrQG0DxPEeGXEoggOa7gQw" association="_TAWKYDxPEeGXEoggOa7gQw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TAWKYjxPEeGXEoggOa7gQw" value="1"/>

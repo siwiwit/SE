@@ -11,6 +11,7 @@ package [c._package.name/];
 import java.io.File;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
@@ -68,7 +69,10 @@ public interface [intr.name/] {
 [/template]
 
 [template public checkImportList(c: Class)]
-[if ((attributeMultiplicity(c) -> size()>0) or (assoziationMultiplicity(c) -> size()>0))]import java.util.List;[/if]
+[if ((attributeMultiplicity(c) -> size()>0) or (assoziationMultiplicity(c) -> size()>0))]
+import java.util.List;
+import java.util.ArrayList;
+[/if]
 [/template]
 
 [query public attributeMultiplicity(c:Class) : Set(Property) = c.attribute -> select(p|p.upper = -1 or p.upper > 1) /]
@@ -82,16 +86,16 @@ public interface [intr.name/] {
 
 [template public attributes(p:Property)]	[comment ToDo: multiple attribute types, not only String, int, boolean /]
 [genPersistenceAnnotations(p)/]
-[p.type.visibility/][if (p.upper = -1 or p.upper > 1)] List<[p.type.name/]>[else] [p.type.name/][/if] [p.name.toLowerFirst()/];
+[p.type.visibility/][if (p.upper = -1 or p.upper > 1)] List<[p.type.name/]> [p.name.toLowerFirst()/] = new ArrayList<[p.type.name/]>() [else] [p.type.name/] [p.name.toLowerFirst()/][/if];
 [/template]
 
-[template public genPersistenceAnnotations(e:Property)]
-	[if (e.type.getAppliedStereotype('Profile::xmlroot') <> null)]
-	@Element[/if]
-	[if (e.getAppliedStereotype('Profile::xmlattribute') <> null)]
+[template public genPersistenceAnnotations(p:Property)]
+	[if (p.type.getAppliedStereotype('Profile::xmlroot') <> null)]
+	[if (p.upper = -1 or p.upper > 1)]@ElementList[else]@Element[/if][/if]
+	[if (p.getAppliedStereotype('Profile::xmlattribute') <> null)]
 	@Attribute[/if]
-	[if (e.getAppliedStereotype('Profile::xmlelement') <> null)]
-	@Element[/if]
+	[if (p.getAppliedStereotype('Profile::xmlelement') <> null)]
+	[if (p.upper = -1 or p.upper > 1)]@ElementList[else]@Element[/if][/if]
 [/template]
 
 [template public associations(a:Association, c:Class)]	[comment ToDo: Aggregation, nondirectional, etc. /]
