@@ -17,7 +17,15 @@
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_brIAEihBEeGG4Lr-APSAvA" key="PropStereoDisplay" value=""/>
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_brIAEyhBEeGG4Lr-APSAvA" key="StereotypePropertyLocation" value="Compartment"/>
     </eAnnotations>
-    <children xmi:type="notation:DecorationNode" xmi:id="_G7OCgyhBEeGG4Lr-APSAvA" type="5029"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_G7OCgyhBEeGG4Lr-APSAvA" type="5029">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qqFtwDxNEeGXEoggOa7gQw" source="Stereotype_Annotation">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqGU0DxNEeGXEoggOa7gQw" key="StereotypeWithQualifiedNameList" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqcTEDxNEeGXEoggOa7gQw" key="StereotypeList" value="Profile::xmlroot"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqcTETxNEeGXEoggOa7gQw" key="Stereotype_Presentation_Kind" value="HorizontalStereo"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqcTEjxNEeGXEoggOa7gQw" key="PropStereoDisplay" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qqevUDxNEeGXEoggOa7gQw" key="StereotypePropertyLocation" value="Compartment"/>
+      </eAnnotations>
+    </children>
     <children xmi:type="notation:BasicCompartment" xmi:id="_G7OChChBEeGG4Lr-APSAvA" type="7017">
       <children xmi:type="notation:Shape" xmi:id="_OzgNYChBEeGG4Lr-APSAvA" type="3012" fontName="Lucida Grande" fontHeight="11" lineColor="0">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_c-d3QChBEeGG4Lr-APSAvA" source="Stereotype_Annotation">
