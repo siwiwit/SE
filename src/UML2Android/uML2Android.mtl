@@ -1,11 +1,32 @@
 [comment encoding = UTF-8 /]
-[module uML2Android('http://www.eclipse.org/uml2/3.0.0/UML')/]
+[module uML2Android('http://www.eclipse.org/uml2/3.0.0/UML') /]
 
-[template public UML2Android(c : Class)]
-	
+[import androidmanifestXML /]
+[import activity /]
+[import javaclass /]
+
+[template public uML2Android(p : Package)]
 	[comment @main /]
-	[file (c.name.concat('.java'), false, 'UTF-8')]
-		
-	[/file]
-	
+	[for (e : Element | p.ownedElement)]
+		[if (e.oclIsKindOf(Class)) ]
+
+			[comment TODO: Bessere Methode zum Abfragen einer Activity finden. SuperStereotype? query in androidmanifest? /]
+			[if e.getAppliedStereotype('profile::Activity') <> null or
+				e.getAppliedStereotype('profile::ListActivity') <> null or
+				e.getAppliedStereotype('profile::PreferenceActivity') <> null or
+				e.getAppliedStereotype('profile::MapActivity') <> null]
+				[activity(e.oclAsType(Class))/]
+
+			[comment   AndroidManifest.xml /]
+			[elseif e.getAppliedStereotype('profile::AndroidManifestXML') <> null]
+				[androidmanifestXML(e.oclAsType(Class))/]
+
+			[comment   Standard Java class /]
+			[elseif e.getAppliedStereotypes()->size() = 0]
+				[javaclass(e.oclAsType(Class))/]
+			[/if]
+		[/if]
+	[/for]
 [/template]
+
+[query public div(r1: Real, r2: Real) : Real = invoke('SWE_Android.files.Utility','div(java.lang.Double, java.lang.Double)', Sequence{r1, r2}) /]
