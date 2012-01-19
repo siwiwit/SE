@@ -25,24 +25,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Entry point of the 'UML+Profile2Android' generation module.
+ * Entry point of the 'UML2Android' generation module.
  *
  * @generated
  */
-public class UML+Profile2Android extends AbstractAcceleoGenerator {
+public class UML2Android extends AbstractAcceleoGenerator {
     /**
      * The name of the module.
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/UML2Android/UML+Profile2Android";
+    public static final String MODULE_FILE_NAME = "/UML2Android/uML2Android";
     
     /**
      * The name of the templates that are to be generated.
      *
      * @generated
      */
-    public static final String[] TEMPLATE_NAMES = { "generateClasses" };
+    public static final String[] TEMPLATE_NAMES = { "UML2Android" };
     
     /**
      * The list of properties files from the launch parameters (Launch configuration).
@@ -65,7 +65,7 @@ public class UML+Profile2Android extends AbstractAcceleoGenerator {
      *
      * @generated
      */
-    public UML+Profile2Android() {
+    public UML2Android() {
         // Empty implementation
     }
 
@@ -85,7 +85,7 @@ public class UML+Profile2Android extends AbstractAcceleoGenerator {
      *             the model cannot be loaded.
      * @generated
      */
-    public UML+Profile2Android(URI modelURI, File targetFolder,
+    public UML2Android(URI modelURI, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(modelURI, targetFolder, arguments);
     }
@@ -106,7 +106,7 @@ public class UML+Profile2Android extends AbstractAcceleoGenerator {
      *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
      * @generated
      */
-    public UML+Profile2Android(EObject model, File targetFolder,
+    public UML2Android(EObject model, File targetFolder,
             List<? extends Object> arguments) throws IOException {
         initialize(model, targetFolder, arguments);
     }
@@ -134,7 +134,7 @@ public class UML+Profile2Android extends AbstractAcceleoGenerator {
                  * add in "arguments" this "String" attribute.
                  */
                 
-                UML+Profile2Android generator = new UML+Profile2Android(modelURI, folder, arguments);
+                UML2Android generator = new UML2Android(modelURI, folder, arguments);
                 
                 /*
                  * Add the properties from the launch arguments.
