@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module UML+Profile2Android('http://www.eclipse.org/uml2/3.0.0/UML')/]
+
+[template public generateClasses(c : Class)]
+	
+	[comment @main /]
+	[file (c.name.concat('.java'), false, 'UTF-8')]
+		
+	[/file]
+	
+[/template]
