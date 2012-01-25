@@ -4,29 +4,31 @@
 [import androidmanifestXML /]
 [import activity /]
 [import javaclass /]
+[import folder /]
 
 [template public uML2Android(p : Package)]
 	[comment @main /]
-	[for (e : Element | p.ownedElement)]
-		[if (e.oclIsKindOf(Class)) ]
+	[for (c : Class | p.ownedElement -> select(e:Element | e.oclIsKindOf(Class)))]
 
-			[comment TODO: Bessere Methode zum Abfragen einer Activity finden. SuperStereotype? query in androidmanifest? /]
-			[if e.getAppliedStereotype('profile::Activity') <> null or
-				e.getAppliedStereotype('profile::ListActivity') <> null or
-				e.getAppliedStereotype('profile::PreferenceActivity') <> null or
-				e.getAppliedStereotype('profile::MapActivity') <> null]
-				[activity(e.oclAsType(Class))/]
+		[comment TODO: Bessere Methode zum Abfragen einer Activity finden. SuperStereotype? query in androidmanifest? /]
+		[if c.getAppliedStereotype('profile::Activity') <> null or
+			c.getAppliedStereotype('profile::ListActivity') <> null or
+			c.getAppliedStereotype('profile::PreferenceActivity') <> null or
+			c.getAppliedStereotype('profile::MapActivity') <> null]
+			[activity(c)/]
+			[layoutfile(c) /]
 
-			[comment   AndroidManifest.xml /]
-			[elseif e.getAppliedStereotype('profile::AndroidManifestXML') <> null]
-				[androidmanifestXML(e.oclAsType(Class))/]
+		[comment   AndroidManifest.xml /]
+		[elseif c.getAppliedStereotype('profile::AndroidManifestXML') <> null]
+			[androidmanifestXML(c)/]
 
-			[comment   Standard Java class /]
-			[elseif e.getAppliedStereotypes()->size() = 0]
-				[javaclass(e.oclAsType(Class))/]
-			[/if]
+		[comment   Standard Java class /]
+		[elseif c.getAppliedStereotypes()->size() = 0]
+			[javaclass(c)/]
 		[/if]
-	[/for]
-[/template]
 
-[query public div(r1: Real, r2: Real) : Real = invoke('SWE_Android.files.Utility','div(java.lang.Double, java.lang.Double)', Sequence{r1, r2}) /]
+	[/for]
+
+	[stringsfile(p) /]
+	[copyImageFile() /]
+[/template]

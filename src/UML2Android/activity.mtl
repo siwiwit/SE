@@ -2,8 +2,10 @@
 [module activity('http://www.eclipse.org/uml2/3.0.0/UML')]
 
 [template public activity(c : Class)]
-[file (c._package.name + '/' + c.name + '.java', false)]
+[file ('src/' + c._package.name + '/' + c.name + '.java', false)]
 package [c._package.name/];
+
+
 
 public[if (c.isAbstract)] abstract[/if] class [c.name/] extends Activity [generalization(c)/] {
 
@@ -50,13 +52,17 @@ public[if (c.isAbstract)] abstract[/if] class [c.name/] extends Activity [genera
 implements [for (classifier:Classifier | c.getAllUsedInterfaces()) separator(', ')][classifier.name/] [/for][/if][/template]
 
 [template public attributes(p:Property)]	[comment ToDo: multiple attribute types, not only String, int, boolean /]
-[if p.type.getAppliedStereotype('profile::Button') <> null]
-[p.type.visibility/] Button [p.type.name/];
+[if p.type.getAppliedStereotype('profile::Button') <> null][p.type.visibility/] Button [p.type.name/];
 [else][p.type.visibility/][if (p.upper = -1 or p.upper > 1)] List<[p.type.name/]>[else] [p.type.name/][/if] [p.name.toLowerFirst()/];
-[/if] 
-[/template]
+[/if][/template]
 
 [template public onclicklistener(p:Property)]
+[p.type.getValue(p.type.getAppliedStereotype('profile::Button'), 'editPoiActivity_btnSavePos_0') /]
+Qualified Name:	[p.type.qualifiedName/]
+Name:			[p.type.name/]
+
+
+
 [if p.type.getAppliedStereotype('profile::Button') <> null]
 [p.type.name/].setOnClickListener(new OnClickListener() {
 	@Override
